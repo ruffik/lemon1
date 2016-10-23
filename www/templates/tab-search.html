@@ -1,0 +1,31 @@
+<ion-view view-title={{::navTitle}}>
+    <ion-content class="padding">
+        <div class="list list-inset">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search" data-ng-model="search.term">
+            </label>
+            <div class="buttons">
+                <button data-ng-show="search.term.length"
+                        class="button button-icon ion-android-close input-button"
+                        data-ng-click="search.term = ''">
+                </button>           
+            </div>     
+            <a class="button button-block button-royal" data-ng-click="performSearch()">go find</a>
+        </div>
+        <ion-list>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" data-ng-repeat="g in giphies" type="item-text-wrap" href="#/tab/search/{{g.id}}">
+                <img data-ng-src="{{g.images.fixed_height.url}}" data-ng-alt="{{g.images.fixed_height.url}}">
+                <h2>{{g.slug}}</h2>
+                <p>{{g.id}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+                <ion-option-button class="button-assertive" on-tap="goDetails(g.id)">
+                    details
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <ion-footer-bar align-title="center" class="bar-tabs">
+        <div class="title">{{statusMessage}}</div>
+    </ion-footer-bar>        
+</ion-view>

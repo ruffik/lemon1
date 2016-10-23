@@ -1,0 +1,32 @@
+<ion-view view-title="{{giphy.slug}}">
+    <ion-content class="padding">
+        <div class="card">
+            <div class="item item-divider">
+                {{giphy.url}} 
+            </div>
+            <div class="item item-body">
+                <video controls="controls" preload="metadata" autoplay="autoplay" 
+                    webkit-playsinline="webkit-playsinline" class="videoPlayer centerme">
+                    <source data-ng-src="{{giphy.video | trusted}}" type="video/mp4"/>
+                </video>                
+            </div>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+		<a class="tab-item" data-ng-click="">
+                    <i class="icon ion-thumbsup"></i> Like {{giphy.likes}}
+		</a>
+		<a class="tab-item" data-ng-click="">
+                    <i class="icon ion-thumbsdown"></i> Dislike {{giphy.dislikes}}
+		</a>
+            </div>
+	</div>
+    </ion-content>
+  <ion-footer-bar align-title="center" class="bar-tabs">
+        <button class="button button-icon icon  ion-chevron-left" 
+            data-ng-click="goBack()">
+        </button>
+        <div class="title">{{statusMessage}}</div>
+        <button class="button button-icon icon ion-thumbsup" 
+            data-ng-click="vote(giphy)">
+        </button>       
+    </ion-footer-bar>     
+</ion-view>
